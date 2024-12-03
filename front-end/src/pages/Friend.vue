@@ -1,0 +1,9 @@
+<template>
+  <div class="page">
+    <h1>Home Page</h1>
+    <p>Welcome to the Home page!</p>
+  </div>
+</template>
+
+<style>
+</style>
