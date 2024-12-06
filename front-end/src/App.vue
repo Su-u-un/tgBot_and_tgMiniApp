@@ -8,16 +8,20 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { onBeforeMount } from 'vue';
+import { useMeritsStore } from "./store";
+import api from './api';
 import TabBar from './components/TabBar.vue';
 import NavBar from './components/NavBar.vue';
 
-export default {
-  components: {
-    TabBar,
-    NavBar
-},
-};
+const store = useMeritsStore();
+
+onBeforeMount(() => {
+  api.getInfo().then((res) => {
+    store.setInfo(res.data)
+  })
+})
 </script>
 
 <style scoped>

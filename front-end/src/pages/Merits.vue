@@ -17,14 +17,14 @@
       <div class="life">
         <img src="../assets/images/merits/Rectangle-3.png" alt="" >
         <div>
-          <span>{{ live }}/1000</span>
+          <span>{{ store.stamina }}/1000</span>
         </div>
       </div>
     </div>
 
     <van-progress 
       class="progress"
-      :percentage="live / 1000 * 100" 
+      :percentage="store.stamina / 1000 * 100" 
       stroke-width="8" 
       :show-pivot="false" 
       track-color="#9f9081"
@@ -43,13 +43,12 @@ export default {
   setup() {
     const container = ref(null);
     const count = ref(0);
-    const live = ref(1000);
     const popups = ref([]);
     const store = useMeritsStore();
     let popupId = 0;
     const clickFish = (event)=>{
       store.merit++
-      live.value--
+      store.stamina--
 
       // 生成弹出提示
       const x = event.clientX + 50
@@ -70,7 +69,6 @@ export default {
       popups,
       container,
       count,
-      live,
       clickFish,
       removePopup,
       store

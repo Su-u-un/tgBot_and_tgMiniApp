@@ -3,10 +3,18 @@ import { defineStore } from 'pinia'
 export const useMeritsStore = defineStore('merit', {
   state: () => ({
     merit: 0,
+    stamina: 1000
   }),
   actions: {
+    setInfo(info) {
+      this.merit = info.merit
+      this.stamina = info.stamina
+    },
     addMerits() {
       this.merit+=1
+    },
+    addStamina() {
+      this.stamina-=1
     },
     // async reloadTab(path, keepAlive) {
     //   const findItem = this.tabs.find(item => item.path === path)
