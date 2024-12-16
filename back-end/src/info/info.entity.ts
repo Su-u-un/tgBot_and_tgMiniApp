@@ -1,12 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class App {
+export class Info {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ type: 'varchar' })
-  username: string;
 
   @Column({ type: 'varchar' })
   merits: string;
@@ -14,9 +11,6 @@ export class App {
   @Column({ type: 'varchar' })
   stamina: string;
 
-  @Column({ default: 1 })
-  isActive: number;
-
-  @Column({ default: 1 })
-  isReset: number;
+  @Column({ type: 'varchar' })
+  updateTime: string;
 }

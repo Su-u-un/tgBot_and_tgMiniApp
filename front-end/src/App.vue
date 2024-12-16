@@ -9,16 +9,34 @@
 </template>
 
 <script setup>
-import { onBeforeMount } from 'vue';
+import { onBeforeMount,  } from 'vue';
 import { useMeritsStore } from "./store";
 import api from './api';
+import { newDay } from "./utils";
 import TabBar from './components/TabBar.vue';
 import NavBar from './components/NavBar.vue';
-
 const store = useMeritsStore();
 
 onBeforeMount(() => {
-  api.getInfo().then((res) => {
+  // 通过bot api获取api
+  const initData = window.Telegram.WebApp.initData; // 获取初始化数据
+  if (initData) {
+      const params = new URLSearchParams(initData);
+      const user = params.get('user'); // 提取 'user' 数据
+      if (user) {
+          const userInfo = JSON.parse(user); // 转换为 JSON 对象
+          store.user=userInfo
+      }
+  } 
+  // 用户初始化
+  api.getUser({id: store.user.id,username: store.user.first_name})
+  // 获取用户功德体力
+  api.getInfo({id: store.user.id}).then((r) => {
+    const res = r.data
+    const loginTime = new Date().getTime()
+    if(newDay(res.data.updateTime, loginTime)){
+      res.data.stamina = 1000;
+    }
     store.setInfo(res.data)
   })
 })

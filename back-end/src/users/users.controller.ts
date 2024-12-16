@@ -1,23 +1,32 @@
 import {
   Body,
+  Query,
   Controller,
   Delete,
   Get,
-  Param,
   Post,
   ParseIntPipe,
+  HttpCode,
+  Response
 } from '@nestjs/common';
-import { CreateUserDto } from '../dto/create-user.dto';
-import { User } from './user.entity';
 import { UsersService } from './users.service';
 
-@Controller('users')
+@Controller('')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('username')
-  getUsername(): Promise<User[]> {
-    return this.usersService.getUsername();
+  @Get('getUser')
+  user(@Query() data: any, @Response() res:any): any {
+    this.usersService.getUser(data.id).then((r) => {
+      if(!r.length){
+        this.usersService.createUser(data)
+      }
+      return res.send({
+        code: 200,
+        data: {id:data.id},
+        message: 'success'
+      });
+    })
+    
   }
-
 }

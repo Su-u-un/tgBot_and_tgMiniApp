@@ -1,17 +1,18 @@
 import { defineStore } from 'pinia'
 
-export const useMeritsStore = defineStore('merit', {
+export const useMeritsStore = defineStore('merits', {
   state: () => ({
-    merit: 0,
+    user:{},
+    merits: 0,
     stamina: 1000
   }),
   actions: {
     setInfo(info) {
-      this.merit = info.merit
+      this.merits = info.merits
       this.stamina = info.stamina
     },
     addMerits() {
-      this.merit+=1
+      this.merits+=1
     },
     addStamina() {
       this.stamina-=1

@@ -1,6 +1,6 @@
 <template>
   <div id="score">
-    <span class="math">{{ store.merit }}</span>
+    <span class="math">{{ store.merits }}</span>
     <img src="../assets/images/merits/icon.png" alt=""/>
   </div>
 </template>

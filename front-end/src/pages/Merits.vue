@@ -1,10 +1,10 @@
 <template>
   <div class="merits" ref="container">
     <score/>
-    <!-- <img class="people" src="../assets/images/merits/people.png" alt="" /> -->
-    <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
-    <img class="sticks" src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
-
+    <div style="position: absolute;bottom:3rem;height:10rem;width:10rem;">
+      <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
+      <img class="sticks" :class="{ 'animate-hit': isHitting }"  src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
+    </div>
     <Popup
       v-for="(popup, index) in popups"
       :key="popup.id"
@@ -21,6 +21,9 @@
         </div>
       </div>
     </div>
+    <audio ref="clickSound">
+      <source src="../assets/music.mp3" type="audio/mpeg">
+    </audio>
 
     <van-progress 
       class="progress"
@@ -37,19 +40,37 @@
 import { ref } from "vue";
 import { useMeritsStore } from "../store";
 import { Popup, Score } from "../components";
+import api from "../api";
 
 export default {
   components: { Popup, Score },
   setup() {
+    const isHitting = ref(false);
     const container = ref(null);
     const count = ref(0);
     const popups = ref([]);
+    const clickSound = ref(null);
     const store = useMeritsStore();
     let popupId = 0;
+    
     const clickFish = (event)=>{
-      store.merit++
-      store.stamina--
+      clickSound.value.currentTime = 0
+      clickSound.value.play()
 
+      isHitting.value = false;
+      isHitting.value = true;
+      setTimeout(() => {
+        isHitting.value = false;
+      },100)
+
+      store.merits++
+      store.stamina--
+      
+      api.updateInfo({
+        id: store.user.id,
+        merits:store.merits ,
+        stamina:store.stamina
+      })
       // 生成弹出提示
       const x = event.clientX + 50
       const y = event.clientY - 100
@@ -69,9 +90,11 @@ export default {
       popups,
       container,
       count,
+      clickSound,
       clickFish,
       removePopup,
-      store
+      store,
+      isHitting
     }
   }
 };
@@ -91,20 +114,22 @@ export default {
   margin-right: 10px;
 }
 .people{
-
   width: 100%;
 }
 .fish{
+  left:2rem;
   position: absolute;
-  left: 55%;
-  top: 90%;
-  transform: translate(-55%, -90%);
+  
 }
 .sticks{
   position: absolute;
-  left: 30%;
-  top: 87%;
-  transform: translate(-30%, -87%);
+  left:-2rem;
+  top:-2rem;
+  transform-origin: bottom left;
+  transition: transform 0.2s;
+}
+.animate-hit {
+  transform: rotate(10deg); /* 敲击的旋转角度 */
 }
 .merits {
   position: relative;
