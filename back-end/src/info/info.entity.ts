@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Info {
-  @PrimaryColumn({ type: 'varchar', length: 255 })
+  @PrimaryColumn()
   id: string;
 
   @Column({ type: 'varchar' })
