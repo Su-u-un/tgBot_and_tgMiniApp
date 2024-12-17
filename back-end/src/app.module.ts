@@ -5,10 +5,18 @@ import { InfoModule } from './info/info.module';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
-import { configRemote, configLocal } from './config';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(configRemote),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: process.env.DB_HOST,
+      port: 3306,
+      username: process.env.DB_USER,
+      password: process.env.DB_PWD,
+      database: process.env.DB_NAME,
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
     UsersModule,
     InfoModule
   ],

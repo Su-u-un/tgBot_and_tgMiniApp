@@ -4,4 +4,4 @@ front-end/.env
 front-end/.env.development
 front-end/.env.production
 
-back-end/src/config.js
+back-end/.env
