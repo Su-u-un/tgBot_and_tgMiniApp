@@ -13,10 +13,10 @@
 
 <script>
 import { useRoute } from 'vue-router';
-import Merits from "../assets/images/frame-13.svg";
-import BOOSTS from "../assets/images/frame-14.svg";
-import TASKS from "../assets/images/frame-15.svg";
-import GAMES from "../assets/images/frame-16.svg";
+import Merits from "../assets/images/Frame-13.svg";
+import BOOSTS from "../assets/images/Frame-14.svg";
+import TASKS from "../assets/images/Frame-15.svg";
+import GAMES from "../assets/images/Frame-16.svg";
 import friend from "../assets/images/friend-1.svg";
 
 export default {

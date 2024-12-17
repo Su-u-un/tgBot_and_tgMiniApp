@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Friend from '../pages/friend.vue';
+import Friend from '../pages/Friend.vue';
 import Tasks from '../pages/Tasks.vue';
 import Merits from '../pages/Merits.vue';
 import Boosts from '../pages/Boosts.vue';
