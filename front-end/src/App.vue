@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <NavBar />
     <div class="view">
       <router-view/>
     </div>
@@ -60,6 +59,5 @@ onBeforeMount(() => {
   margin-top:4rem;
   width: 100%;
   height:calc(100vh - 11.5rem);
-  margin-bottom: 3rem;
 }
 </style>

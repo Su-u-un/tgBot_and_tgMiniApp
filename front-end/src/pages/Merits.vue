@@ -101,15 +101,6 @@ export default {
 </script>
 
 <style scoped>
-#score{
-  margin-top:0rem;
-  font-size: 28px;
-  font-weight: bold;
-  line-height: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-}
 .math{
   margin-right: 10px;
 }

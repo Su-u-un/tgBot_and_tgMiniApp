@@ -12,7 +12,7 @@ const store = useMeritsStore();
 
 <style scoped>
 #score{
-  margin-top:0rem;
+  margin-top:3rem;
   font-size: 28px;
   font-weight: bold;
   line-height: 38px;
