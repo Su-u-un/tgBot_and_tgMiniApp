@@ -1,10 +1,13 @@
 <template>
   <div class="popup" :style="style">
-    +1
+    +{{ store.attr.click }}
   </div>
 </template>
 
 <script>
+import { useMeritsStore } from "../store";
+const store = useMeritsStore();
+
 export default {
   props: {
     initialX: {
@@ -25,7 +28,8 @@ export default {
         opacity: 1,
         transition: 'transform 1s ease-out, opacity 1s ease-out',
         transform: 'translateY(0)'
-      }
+      },
+      store
     }
   },
   mounted() {

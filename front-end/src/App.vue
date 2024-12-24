@@ -27,10 +27,12 @@ onBeforeMount(() => {
           store.user=userInfo
       }
   } 
-  // 用户初始化
-  api.getUser({id: store.user.id,username: store.user.first_name})
+  // 获取用户属性
+  api.getUser({id: 1,username: store.user.first_name}).then((r) => {
+    store.attr = r.data.data
+  })
   // 获取用户功德体力
-  api.getInfo({id: store.user.id}).then((r) => {
+  api.getInfo({id: 1}).then((r) => {
     const res = r.data
     const loginTime = new Date().getTime()
     if(newDay(res.data.updateTime, loginTime)){

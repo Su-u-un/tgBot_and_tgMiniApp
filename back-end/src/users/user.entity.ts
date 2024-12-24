@@ -8,6 +8,9 @@ export class User {
   @Column({ type: 'varchar' })
   username: string;
 
+  @Column({ type: 'varchar' })
+  click: string;
+
   @Column({ default: true })
   isActive: boolean;
 }

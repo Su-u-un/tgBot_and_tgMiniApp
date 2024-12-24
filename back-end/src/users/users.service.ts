@@ -16,6 +16,27 @@ export class UsersService {
     return this.usersRepository.query(`select * from user where id=${id}`);
   }
 
+  async getClick(level:string): Promise<any> {
+    return this.usersRepository.query(`select value from attr where type='click' and level=${level}`);
+  }
+
+  async getClickCost(level:any): Promise<any> {
+    return this.usersRepository.query(`select cost from attr where type='click' and level=${level}`);
+  }
+
+  async getMerits(id:string): Promise<any> {
+    return this.usersRepository.query(`select merits from info where id=${id}`);
+  }
+
+  async update(data:any): Promise<any> {
+    const time = timestamp()
+    return this.usersRepository.query(`update info set merits=${data.merits},updateTime='${time}' where id=${data.id}`);
+  }
+
+  async updateUser(data:any): Promise<any> {
+    return this.usersRepository.query(`update user set click=${data.click} where id=${data.id}`);
+  }
+
   async createUser(user: any): Promise<any> {
     const time = timestamp()
     this.usersRepository.query(`insert into info (id,merits,stamina,updateTime) values ('${user.id}',0,1000,'${time}')`);  

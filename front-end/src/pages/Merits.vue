@@ -54,6 +54,7 @@ export default {
     let popupId = 0;
     
     const clickFish = (event)=>{
+      api.updateClick({ id: 1 })
       clickSound.value.currentTime = 0
       clickSound.value.play()
 
@@ -63,11 +64,11 @@ export default {
         isHitting.value = false;
       },100)
 
-      store.merits++
+      store.addMerits(store.attr.click)
       store.stamina--
       
       api.updateInfo({
-        id: store.user.id,
+        id: 1,
         merits:store.merits ,
         stamina:store.stamina
       })
