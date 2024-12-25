@@ -45,8 +45,16 @@ export default {
 
 <style scoped>
 .popup {
-  font-size: 50px;
-  color: black;
+  -webkit-text-stroke: 0.1rem #c29b4f;
+  font-weight: bold;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 1.8rem;
+  color: white;
   pointer-events: none;
+  height:3rem;
+  width:3rem;
+  background: url("../assets/images/plus.png") no-repeat center;
+  background-size: contain;
 }
 </style>

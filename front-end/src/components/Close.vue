@@ -23,7 +23,6 @@ export default {
 
 .frame .text-wrapper {
   color: #ffffff;
-  font-family: "SF Pro Text-Bold", Helvetica;
   font-size: 18px;
   font-weight: 700;
   height: 18px;

@@ -1,6 +1,7 @@
 <template>
   <div class="merits" ref="container">
     <score/>
+    <div>Budda></div>
     <div style="position: absolute;bottom:3rem;height:10rem;width:10rem;">
       <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
       <img class="sticks" :class="{ 'animate-hit': isHitting }"  src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
@@ -15,7 +16,7 @@
 
     <div class="life-wrap">
       <div class="life">
-        <img src="../assets/images/merits/Rectangle-3.png" alt="" >
+        <img style="height:1.5rem;margin-right:0.5rem" src="../assets/images/merits/Rectangle-3.png" alt="" >
         <div>
           <span>{{ store.stamina }}/1000</span>
         </div>
@@ -30,8 +31,8 @@
       :percentage="store.stamina / 1000 * 100" 
       stroke-width="8" 
       :show-pivot="false" 
-      track-color="#9f9081"
-      color="#edb34a"
+      track-color="#816b51"
+      color="#ffd02e"
     />
   </div>
 </template>
@@ -137,12 +138,13 @@ export default {
   background-color: #736a5c;
   border-radius: 10px;
   bottom: 2rem;
-  color:white;
+  background-color:white;
 }
 .life{
-  padding: 0 10px;
+  padding: 0.3rem 1rem;
   display: flex;
   align-items: center;
+  color: #806a50;
 }
 .progress{
   position: absolute;

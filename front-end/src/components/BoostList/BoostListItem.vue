@@ -1,35 +1,46 @@
 <template>
   <div class="item">
       <div class="left">
-        <div class="img"></div>
+        <div class="img">
+          <img class="image" alt="" :src="props.image">
+        </div>
         <div class="text">
           <div>{{ props.label }}</div>
+          
           <div style="display:flex;align-items:center;gap:0.3rem">
-            <img alt="" src="../assets//images/tasks/gongde.png">
-            30k
+            <img alt="" src="../../assets//images/tasks/gongde.png">
+            2k<span style="color:#dfc587"> - level1</span>
           </div>
         </div>
       </div>
-      <div class="btn">START</div>
+      <img class="btn" :src="arrow" alt="">
+      
     </div> 
 </template>
 
 <script setup>
-const props = defineProps(['label'])
-
+import arrow from '../../assets/images/boosts/arrow.png'
+const props = defineProps(['label','image'])
 </script>
 
 <style scoped>
 .img{
-  width:40px;
-  height:40px;
+  width:3rem;
+  height:3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
-  background-color: blue;
+  background-color: #877561;
   margin-right:0.5rem;
+}
+.image{
+  max-width: 85%;
+  max-height: 85%;
 }
 .item{
   align-items: flex-start;
-  background-color: #48413b99;
+  background-color: #9f8465;
   border-radius: 1rem;
   display: flex;
   gap: 1rem;
@@ -45,11 +56,10 @@ const props = defineProps(['label'])
 }
 .text{
   text-align: left;
-  color:white;
+  color:#ffe7ae;
 }
 .btn{
-  background-color: #e2b36d;
-  padding:0.5rem;
-  border-radius: 0.5rem;
+  max-width: 1rem;
+  max-height: 1rem;
 }
 </style>

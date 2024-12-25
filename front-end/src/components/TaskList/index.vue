@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import TaskListItem from '../components/TaskListItem.vue'
+import TaskListItem from './TaskListItem.vue'
 
 </script>
 

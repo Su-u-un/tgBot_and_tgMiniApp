@@ -43,124 +43,74 @@ export default {
 </script>
 
 <style scoped>
-.tab-bar {
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #f5f5f5;
-  border-top: 1rem solid #ddd;
-  padding: 10px 0;
-}
-.tab-item {
-  text-align: center;
-  text-decoration: none;
-  color: #666;
-  flex: 1;
-}
- .active {
+.frame{
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  align-items: center;
+  background-color: #fffef7;
   border-radius: 1rem;
-  background-color: #423a35;
- }
+  display: flex;
+  overflow: hidden;
+  width: 20rem;
+  height: 3rem;
+  gap:1rem;
+}
+.active {
+
+}
 
 .frame .overlap-group-wrapper {
-  opacity: 0.6;
   position: relative;
-  width: 54px;
 }
 
 .frame .overlap-group {
-  height: 48px;
-  left: 3px;
-  position: relative;
-  width: 48px;
+  display: flex;
 }
 
 .frame .text-wrapper {
   color: #ffffff;
-  font-family: "SF Pro Text-Bold", Helvetica;
-  font-size: 12px;
-  height: 12px;
-  left: 6px;
-  letter-spacing: -0.41px;
-  line-height: 12px;
-  position: absolute;
   text-align: center;
-  top: 47px;
   white-space: nowrap;
 }
 
 .frame .img {
-  height: 48px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 48px;
+  max-width: 60%;
+  max-height: 60%;
+  display: block;
+  margin: auto;
 }
 
 .frame .div {
   color: #ffffff;
-  font-family: "SF Pro Text-Bold", Helvetica;
-  font-size: 12px;
-  font-weight: 700;
-  height: 12px;
-  left: 4px;
-  letter-spacing: -0.41px;
-  line-height: 12px;
-  position: absolute;
   text-align: center;
-  top: 47px;
   white-space: nowrap;
 }
 
 .frame .overlap-wrapper {
-  height: 72px;
   position: relative;
-  width: 54px;
 }
 
 .frame .overlap {
-  height: 59px;
   position: relative;
-  width: 53px;
 }
 
 .frame .img-2 {
-  height: 48px;
-  left: 3px;
   position: absolute;
-  top: 0;
-  width: 48px;
 }
 
 .frame .text-wrapper-2 {
   color: #ffffff;
-  font-family: "SF Pro Text-Bold", Helvetica;
-  font-size: 12px;
-  font-weight: 700;
-  height: 12px;
-  left: 0;
-  letter-spacing: -0.41px;
-  line-height: 12px;
   position: absolute;
   text-align: center;
-  top: 47px;
   white-space: nowrap;
 }
 
 .frame .overlap-2 {
-  height: 59px;
-  left: 1px;
   position: relative;
-  width: 50px;
 }
 
 .frame .img-3 {
-  height: 48px;
-  left: 2px;
   position: absolute;
-  top: 0;
-  width: 48px;
 }
 </style>

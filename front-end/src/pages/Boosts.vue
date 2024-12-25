@@ -1,16 +1,74 @@
 <template>
-  <div class="page">
-    Coming soon
+  <div class="boost">
+    <Score/>
+    <div>
+      <div class="label">Daily Boosts</div>
+      <div class="daily">
+        <div class="item">
+          <div>
+            <div class="title">Budda Bless</div>
+            <div>3/3</div>
+          </div>
+          <img src="../assets/images/boosts/burn.png" alt=""/>
+        </div>
+        <div class="item">
+          <div>
+            <div class="title">Budda Heal</div>
+            <div>3/3</div>
+          </div>
+          <img src="../assets/images/boosts/light.png" alt=""/>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="label">Upgrades</div>
+      <BoostList/>
+    </div>
   </div>
 </template>
 
+<script setup>
+import { BoostList, Score } from "../components";
+
+
+</script>
+
 <style scoped>
-.page{
-  height: 100%;
-  width: 100%;
+.boost{
   display: flex;
-  justify-content: center;
-  align-items: center; 
-  font-size: 3rem;
+  flex-direction: column;
+  align-items: center;
+}
+.label{
+  font-size:2rem;
+  color:#6a5b4a;
+}
+.daily {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:22rem;
+  margin-bottom: 1rem;
+}
+.item {
+  border-radius:1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b49470;
+  padding: 0.8rem;
+  color: #ffe7ae;
+  height:3rem;
+  width:9rem
+}
+.item .title{
+  font-size:1.3rem;
+  color:white;
+}
+.item img{
+  margin-left:0.5rem;
+  max-width: 80%;
+  max-height: 80%;
 }
 </style>

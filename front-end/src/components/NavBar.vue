@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <close/>
-    <div id="title">aiBudda</div>
-    <more/>
+    <div id="title">AI Budda</div>
   </div>
   
 </template>
@@ -14,17 +12,12 @@ import More from './More.vue';
 </script>
 
 <style scoped>
-#title{
-  position: absolute;
-  margin-left:11rem;
-  margin-top: 0.5rem;
-}
 .container{
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height:2rem;
-  padding:1rem 0;
+  padding:2rem 0;
 }
 </style>
