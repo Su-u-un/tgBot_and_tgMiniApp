@@ -51,19 +51,16 @@ export default {
   background-color: #fffef7;
   border-radius: 1rem;
   display: flex;
+  justify-content: center;
   overflow: hidden;
   width: 20rem;
   height: 3rem;
-  gap:1rem;
-}
-.active {
-
+  gap:1.5rem;
 }
 
 .frame .overlap-group-wrapper {
   position: relative;
 }
-
 .frame .overlap-group {
   display: flex;
 }
@@ -75,8 +72,8 @@ export default {
 }
 
 .frame .img {
-  max-width: 60%;
-  max-height: 60%;
+  max-width: 2rem;
+  max-height: 2rem;
   display: block;
   margin: auto;
 }

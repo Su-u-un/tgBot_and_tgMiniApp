@@ -4,10 +4,10 @@
     <BoostListItem label="Energy Recovery" :image="energy"/>
     <BoostListItem label="Fast Recovery" :image="fast"/>
     <BoostListItem label="Auto-Budda" :image="budda"/>
-    <el-drawer v-model="isshow"  direction="btt" size="60%" :with-header="false" style="background-color: #fffff3;border-top-left-radius: 2rem;border-top-right-radius: 2rem;">
+    <el-drawer v-model="isshow"  direction="btt" size="30rem" :with-header="false" style="background-color: #fffff3;border-top-left-radius: 2rem;border-top-right-radius: 2rem;">
       <div class="drawerBody">
         <div class="quit" @click="quit"></div>
-        <img src="../../assets/images/boosts/clickPopup.png" alt="" style="width:60%;">
+        <img src="../../assets/images/boosts/clickPopup.png" alt="" style="width:13rem;height:13rem;">
         <div style="font-size:1.5rem;color:#7b5f35">Multi-Click</div>
         <div style="width:21rem;text-align:center;color:#9e7c4c">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecena</div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">

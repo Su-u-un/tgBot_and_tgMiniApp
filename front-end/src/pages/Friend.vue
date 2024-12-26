@@ -44,13 +44,12 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  
+  height: calc(100vh - 11.5rem);
 }
 .people{
   background: url(../assets/images/merits/people.png) no-repeat center center;
-  background-size: cover;
-  height:26rem;
+  background-size: 18rem ;
+  height:100%;
   width: 100%;
 }
 .copy{

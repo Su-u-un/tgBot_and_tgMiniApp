@@ -2,6 +2,7 @@
   <div class="budda" ref="container">
     <div style="margin-top: 1rem;font-size: 1.5rem">Earned:</div>
     <Score style="margin-top: 0.5rem"/>
+    <div class="close" @click="close">close</div>
     <div style="font-size: 4rem">Budda</div>
     <div class="people"></div>
     <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -19,11 +20,18 @@
 
 <script>
 import { Score } from "../components";
+import { useRouter } from "vue-router";
 
 export default {
   components: { Score },
   setup() {
+    const router = useRouter();
+      
+    const close = () => {
+      router.push("/merits");
+    }
     return {
+      close
     }
   }
 };
@@ -40,10 +48,24 @@ export default {
   height: 100%;
   
 }
+.close{
+  position: absolute;
+  top:2rem;
+  left:1rem;
+  background-color: #7f7365;
+  border-radius: 1rem;
+  color:white;
+  height:1rem;
+  line-height: 1rem;
+  font-size:1rem;
+  padding: 0.3rem 0.5rem;
+  align-content: center;
+  text-align: center;
+}
 .people{
   background: url(../assets/images/merits/people.png) no-repeat center center;
-  background-size: cover;
-  height:26rem;
+  background-size: 18rem ;
+  height:100%;
   width: 100%;
 }
 .text{

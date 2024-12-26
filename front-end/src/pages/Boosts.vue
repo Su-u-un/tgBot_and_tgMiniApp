@@ -68,7 +68,7 @@ import { BoostList, Score } from "../components";
 }
 .item img{
   margin-left:0.5rem;
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="item">
       <div class="left">
-        <div class="img"></div>
+        <div class="img">
+          <img class="image" alt="" :src="props.image">
+        </div>
         <div class="text">
           <div>{{ props.label }}</div>
           <div style="display:flex;align-items:center;gap:0.3rem">
@@ -10,22 +12,25 @@
           </div>
         </div>
       </div>
-      <div class="btn">START</div>
+      <a :href="props.link" class="btn">START</a>
     </div> 
 </template>
 
 <script setup>
-const props = defineProps(['label'])
+const props = defineProps(['label','link','image'])
 
 </script>
 
 <style scoped>
 .img{
-  width:40px;
-  height:40px;
+  width:2rem;
+  height:2rem;
   border-radius: 100%;
-  background-color: blue;
   margin-right:0.5rem;
+}
+.image{
+  max-width: 2rem;
+  max-height: 2rem;
 }
 .item{
   align-items: flex-start;
@@ -42,6 +47,7 @@ const props = defineProps(['label'])
 .left{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .text{
   text-align: left;
@@ -56,6 +62,7 @@ const props = defineProps(['label'])
   background-color: #fff1cc;
   padding:0.5rem;
   border-radius: 0.5rem;
-  color: #7a614d
+  color: #7a614d;
+  text-decoration: none;
 }
 </style>
