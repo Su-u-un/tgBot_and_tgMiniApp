@@ -90,8 +90,8 @@ export default {
   justify-content: space-around;
 }
 .cost img{
-  width:1.5rem;
-  height: 1.5rem;
+  max-width:1.5rem;
+  max-height: 1.5rem;
 }
 .btn{
   width:100%;

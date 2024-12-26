@@ -3,8 +3,7 @@
     <div style="font-size:0.8rem;width:100%;margin-top:1rem">
       <ul>
         <li>Your friend gets <span>20K</span></li>
-        <li>You earn <span>5%</span> of your friend’s savings.<br>
-        Friend list updates every 24 hours. Next update at Dec 24. 08:00</li>
+        <li>You earn <span>5%</span> of your friend’s savings.</li>
         <li>Friend list updates every 24 hours. Next update at <span>Dec 24. 08:00</span></li>
       </ul>
     </div>

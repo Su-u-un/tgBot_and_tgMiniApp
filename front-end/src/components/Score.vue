@@ -23,4 +23,8 @@ const store = useMeritsStore();
 .math{
   margin-right: 10px;
 }
+img{
+  max-width: 2rem;
+  max-height: 2rem;
+}
 </style>

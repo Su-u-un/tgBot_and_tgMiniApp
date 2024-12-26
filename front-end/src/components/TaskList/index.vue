@@ -1,7 +1,7 @@
 <template>
   <div id="list" >
-    <TaskListItem label="Join Telegram" link="https://t.me/aibuddablessu" :image="tg"/>
-    <TaskListItem label="Subscribe on X" link="https://x.com/aibuddablessu" :image="x"/>
+    <TaskListItem label="Join Telegram" link="https://t.me/aibuddablessu" :image="tg" type="tg"/>
+    <TaskListItem label="Subscribe on X" link="https://x.com/aibuddablessu" :image="x" type="x"/>
     <!-- <TaskListItem label="Like and Repost on X"/> -->
   </div>
 </template>

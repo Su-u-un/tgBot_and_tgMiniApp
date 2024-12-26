@@ -11,7 +11,7 @@
         <div style="font-size:1.5rem;color:#7b5f35">Multi-Click</div>
         <div style="width:21rem;text-align:center;color:#9e7c4c">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecena</div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
-          <img src="../../assets/images/merits/icon.png" style="height:1.5rem;margin-right:2rem" alt=""/>
+          <img src="../../assets/images/merits/icon.png" style="max-height:1.5rem;max-width:1.5rem;margin-right:2rem" alt=""/>
           <span style="color:#d6b363">2K-Level1</span>
         </div>
         <div class="btn" @click="buy">BUY</div>

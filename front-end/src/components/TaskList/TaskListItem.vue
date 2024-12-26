@@ -8,16 +8,34 @@
           <div>{{ props.label }}</div>
           <div style="display:flex;align-items:center;gap:0.3rem">
             <img alt="" src="../../assets//images/tasks/gongde.png">
-            30k
+            2k
           </div>
         </div>
       </div>
-      <a :href="props.link" class="btn">START</a>
+      <div class="btn" @click="click">START</div>
     </div> 
 </template>
 
 <script setup>
-const props = defineProps(['label','link','image'])
+import { useMeritsStore } from "../../store";
+
+const props = defineProps(['label','link','image', 'type'])
+const store = useMeritsStore();
+
+const click = () => {
+  if(!store.clickTg && props.type == 'tg'){
+    store.merits = store.merits + 2000
+    store.clickTg = true
+    window.location.href = props.link
+    return
+  }
+  if(!store.clickX && props.type == 'x'){
+    store.merits = store.merits + 2000
+    store.clickX = true
+    window.location.href = props.link
+    return
+  }
+}
 
 </script>
 
@@ -25,6 +43,12 @@ const props = defineProps(['label','link','image'])
 .img{
   width:2rem;
   height:2rem;
+  border-radius: 100%;
+  margin-right:0.5rem;
+}
+.text img{
+  max-width:1.5rem;
+  max-height:1.5rem;
   border-radius: 100%;
   margin-right:0.5rem;
 }

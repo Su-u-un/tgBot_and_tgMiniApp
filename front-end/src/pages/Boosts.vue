@@ -48,7 +48,6 @@ import { BoostList, Score } from "../components";
   flex-direction: row;
   justify-content: space-between;
   width:22rem;
-  margin-bottom: 1rem;
 }
 .item {
   border-radius:1rem;

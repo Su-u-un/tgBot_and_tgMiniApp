@@ -4,7 +4,9 @@ export const useMeritsStore = defineStore('merits', {
   state: () => ({
     user:{},
     merits: 0,
-    stamina: 1000
+    stamina: 1000,
+    clickTg:false,
+    clickX:false
   }),
   actions: {
     setInfo(info) {
