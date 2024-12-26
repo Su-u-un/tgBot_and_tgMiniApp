@@ -1,7 +1,7 @@
 <template>
   <div class="merits" ref="container">
     <score/>
-    <div>Budda></div>
+    <div @click="goBudda">Budda></div>
     <div style="position: absolute;bottom:3rem;height:10rem;width:10rem;">
       <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
       <img class="sticks" :class="{ 'animate-hit': isHitting }"  src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
@@ -39,6 +39,7 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useMeritsStore } from "../store";
 import { Popup, Score } from "../components";
 import api from "../api";
@@ -46,6 +47,7 @@ import api from "../api";
 export default {
   components: { Popup, Score },
   setup() {
+    const router = useRouter();
     const isHitting = ref(false);
     const container = ref(null);
     const count = ref(0);
@@ -87,6 +89,10 @@ export default {
       popups.value.splice(index, 1);
     };
 
+    const goBudda = () => {
+      router.push("/budda");
+    };
+
     return {
       popups,
       container,
@@ -94,6 +100,7 @@ export default {
       clickSound,
       clickFish,
       removePopup,
+      goBudda,
       store,
       isHitting
     }
@@ -102,12 +109,6 @@ export default {
 </script>
 
 <style scoped>
-.math{
-  margin-right: 10px;
-}
-.people{
-  width: 100%;
-}
 .fish{
   left:2rem;
   position: absolute;
@@ -129,7 +130,7 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 11.5rem);
   background: url(../assets/images/merits/people.png) no-repeat center center;
   background-size: contain;
 }

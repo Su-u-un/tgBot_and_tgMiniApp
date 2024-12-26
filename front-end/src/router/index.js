@@ -7,6 +7,7 @@ import Boosts from '../pages/Boosts.vue';
 import Games from '../pages/Games.vue';
 import fish from '../pages/fish.vue'
 import fire from '../pages/fire.vue'
+import Budda from '../pages/Budda.vue'
 
 const routes = [
   { path: '/', redirect: '/merits' },
@@ -48,6 +49,7 @@ const routes = [
   { path: '/merits', component: Merits },
   { path: '/boosts',  component: Boosts },
   { path: '/games',  component: Games },
+  { path: '/budda',  component: Budda },
 ];
 
 const router = createRouter({

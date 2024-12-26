@@ -18,6 +18,8 @@ import More from './More.vue';
   justify-content: center;
   width: 100%;
   height:2rem;
-  padding:2rem 0;
+  padding:1.5rem 0;
+  font-size: 2rem;
+  color:#8b7f6e;
 }
 </style>

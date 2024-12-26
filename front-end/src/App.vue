@@ -4,18 +4,26 @@
     <div class="view">
       <router-view/>
     </div>
-    <TabBar class="bar" />
+    <TabBar class="bar" v-if="show"/>
   </div>
 </template>
 
 <script setup>
-import { onBeforeMount,  } from 'vue';
+import { onBeforeMount,ref, watch  } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { useMeritsStore } from "./store";
 import api from './api';
 import { newDay } from "./utils";
 import TabBar from './components/TabBar.vue';
 import NavBar from './components/NavBar.vue';
 const store = useMeritsStore();
+const router = useRouter();
+const route = useRoute();
+const show = ref(true)
+
+watch(() => route.path,(newPath, oldPath) => {
+  show.value = newPath === '/budda'?false:true
+  },{ immediate: true });
 
 onBeforeMount(() => {
   // 通过bot api获取api
@@ -40,25 +48,14 @@ onBeforeMount(() => {
     store.setInfo(res.data)
   })
 })
+
+
 </script>
 
 <style scoped>
-.bar{
-  align-items: flex-start;
-  background-color: #48413b99;
-  border-radius: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  overflow: hidden;
-  width: 22rem;
-  height:4.5rem;
-  position: fixed;
-  bottom: 3rem;
-}
 .view{
   margin-top:3rem;
   width: 100%;
-  height:calc(100vh - 11.5rem);
+  height:calc(100vh - 5rem);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="frame">
+  <div class="frame" :style="{ display: display ? 'flex' : 'none' }">
     <router-link v-for="item in tabs" :key="item.path" :to="item.path">
       <div :class="{ active: isActive(item.path) }" class="overlap-group-wrapper"  >
         <div class="overlap-group" >
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { ref, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import Merits from "../assets/images/Frame-13.svg";
 import BOOSTS from "../assets/images/Frame-14.svg";
@@ -23,7 +24,7 @@ export default {
   name: "Frame",
   setup() {
     const route = useRoute();
-
+    const display = ref(true);
     const tabs = [
       { path: '/friend', label: 'FRIEND' , img: friend},
       { path: '/tasks', label: 'TASKS' , img: TASKS},
@@ -43,12 +44,25 @@ export default {
       else return path === route.path;
     }
 
-    return { tabs, isActive };
-  },
+    return { tabs, isActive, display };
+  }
 };
 </script>
 
 <style scoped>
+.frame{
+  align-items: flex-start;
+  background-color: #48413b99;
+  border-radius: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  overflow: hidden;
+  width: 22rem;
+  height:4.5rem;
+  position: fixed;
+  bottom: 3rem;
+}
 .frame a{
   text-decoration: none;
 }

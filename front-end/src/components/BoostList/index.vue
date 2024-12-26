@@ -20,13 +20,13 @@
     <div class="tipWrap" :style="{ display: tipShow ? 'flex' : 'none' }">
       <div class="tip">
         <div style="display:flex;gap:0.5rem;flex-direction:row">
-          <div>shou</div>
+          <div class="tipImg"></div>
           <div>
-            <div>Congratulations!</div>
-            <div>Reward received</div>
+            <div style="color:#8d8072; font-size:1.2rem">Congratulations!</div>
+            <div style="color: #bbac9a;font-size:0.9rem">Reward received</div>
           </div>
         </div>
-        <div @click="quitTip">quit</div>
+        <div @click="quitTip" class="quitTip"></div>
       </div>
     </div>
   </div>
@@ -57,9 +57,9 @@ const quitTip = () => {
 
 const buy = () => {
   tipShow.value = true
-  setTimeout(() => {
-    tipShow.value = false
-  },3000)
+ setTimeout(() => {
+  tipShow.value = false
+ },1000)
 }
 
 </script>
@@ -74,17 +74,28 @@ const buy = () => {
   display: flex;
   justify-content: center;
 }
-
+.quitTip{
+  background: url(../../assets/images/boosts/close.png) no-repeat center;
+  background-size: cover;
+  width: 1rem;
+  height: 1rem;
+}
 .tip{
   background-color: #fff;
   width: 100%;
   height:4rem;
   border-radius: 0.5rem;
   margin: 0.2rem 0.5rem;
-  padding:  0 0.5rem;
+  padding:  0 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.tipImg{
+  width: 2rem;
+  height: 3rem;
+  background: url(../../assets/images/boosts/click.png) no-repeat center;
+  background-size: cover;
 }
 #list{
   display:flex;
