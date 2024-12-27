@@ -54,8 +54,7 @@ onBeforeMount(() => {
 
 <style scoped>
 .view{
-  margin-top:3rem;
+  padding-top:3rem;
   width: 100%;
-  height:calc(100vh - 5rem);
 }
 </style>
