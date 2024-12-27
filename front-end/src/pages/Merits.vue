@@ -13,7 +13,7 @@
       :initialY="popup.y"
       @ended="removePopup(index)"
     />
-    <div class="people"></div>
+    <div class="people" @click="clickFish"></div>
 
     <div class="life-wrap">
       <div class="life">
