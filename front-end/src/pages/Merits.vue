@@ -23,7 +23,7 @@
       </div>
     </div>
     <audio ref="clickSound">
-      <source src="../assets/music.mp3" type="audio/mpeg">
+      <source src="../assets/music.mp3">
     </audio>
 
     <van-progress 
@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import mp3url from "../assets/music.mp3";
+import { ref, onBeforeMount } from "vue";
 import { useRouter } from "vue-router";
 import { useMeritsStore } from "../store";
 import { Popup, Score } from "../components";
@@ -55,10 +56,19 @@ export default {
     const clickSound = ref(null);
     const store = useMeritsStore();
     let popupId = 0;
+    const mp3 = ref()
+
+    onBeforeMount(() => {
+      mp3.value = new Audio(mp3url);
+    })
     
     const clickFish = (event)=>{
-      clickSound.value.currentTime = 0
-      clickSound.value.play()
+      
+      // clickSound.value.currentTime = 0
+      // clickSound.value.play()
+      mp3.value.currentTime = 0
+      mp3.value.play();
+      
 
       isHitting.value = false;
       isHitting.value = true;
