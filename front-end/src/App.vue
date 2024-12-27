@@ -53,8 +53,14 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .view{
-  padding-top:3rem;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

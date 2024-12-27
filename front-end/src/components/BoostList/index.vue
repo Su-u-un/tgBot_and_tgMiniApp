@@ -1,5 +1,6 @@
 <template>
-  <div id="list" >
+  <div id="list">
+    <div style="display:flex;flex-direction:column;gap:1rem">
     <BoostListItem label="Multi-Click" :image="click" @click="cc"/>
     <BoostListItem label="Energy Recovery" :image="energy"/>
     <BoostListItem label="Fast Recovery" :image="fast"/>
@@ -28,7 +29,7 @@
         </div>
         <div @click="quitTip" class="quitTip"></div>
       </div>
-    </div>
+    </div></div>
   </div>
 </template>
 
@@ -65,6 +66,11 @@ const buy = () => {
 </script>
 
 <style scoped>
+#list{
+  max-height:20rem;
+  overflow-y: auto;
+  width:100%;
+}
 .tipWrap{
   z-index: 9999;
   width: 100%;
@@ -96,11 +102,6 @@ const buy = () => {
   height: 3rem;
   background: url(../../assets/images/boosts/click.png) no-repeat center;
   background-size: cover;
-}
-#list{
-  display:flex;
-  flex-direction: column;
-  gap:1rem;
 }
 .quit{
   background: url(../../assets/images/boosts/close.png) no-repeat center;

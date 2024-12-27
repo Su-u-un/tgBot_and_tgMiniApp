@@ -2,7 +2,7 @@
   <div class="merits" ref="container">
     <score/>
     <div @click="goBudda">Budda></div>
-    <div style="position: absolute;bottom:3rem;height:10rem;width:10rem;">
+    <div style="position: absolute;bottom:4rem;height:10rem;width:10rem;">
       <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
       <img class="sticks" :class="{ 'animate-hit': isHitting }"  src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
     </div>
@@ -13,6 +13,7 @@
       :initialY="popup.y"
       @ended="removePopup(index)"
     />
+    <div class="people"></div>
 
     <div class="life-wrap">
       <div class="life">
@@ -141,14 +142,18 @@ export default {
   flex-direction: column;
   width: 100%;
   height: calc(100vh - 11.5rem);
+}
+.people{
   background: url(../assets/images/merits/people.png) no-repeat center center;
-  background-size: contain;
+  background-size: auto 115% ;
+  height:30rem;
+  width: 20rem;
 }
 .life-wrap{
   position: absolute;
   background-color: #736a5c;
   border-radius: 10px;
-  bottom: 2rem;
+  bottom: 3rem;
   background-color:white;
 }
 .life{
@@ -159,7 +164,7 @@ export default {
 }
 .progress{
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   width: 300px;
 }
 .subtitleCountTip {

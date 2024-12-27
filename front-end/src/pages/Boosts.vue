@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="upgrade">
       <div class="label">Upgrades</div>
       <BoostList/>
     </div>
@@ -35,9 +35,12 @@ import { BoostList, Score } from "../components";
 
 <style scoped>
 .boost{
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 18.5rem);
 }
 .label{
   font-size:2rem;
@@ -69,5 +72,8 @@ import { BoostList, Score } from "../components";
   margin-left:0.5rem;
   max-width: 2.5rem;
   max-height: 2.5rem;
+}
+.upgrade{
+  height:60%;
 }
 </style>

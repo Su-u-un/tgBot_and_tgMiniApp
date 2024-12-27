@@ -1,5 +1,5 @@
 <template>
-  <div class="merits" ref="container">
+  <div class="friend">
     <div style="font-size:0.8rem;width:100%;margin-top:1rem">
       <ul>
         <li>Your friend gets <span>20K</span></li>
@@ -36,20 +36,20 @@ export default {
 </script>
 
 <style scoped>
-.merits {
+.friend {
   color:#675649;
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 11.5rem);
+  height: calc(100vh - 13.5rem);
 }
 .people{
   background: url(../assets/images/merits/people.png) no-repeat center center;
-  background-size: 18rem ;
-  height:100%;
-  width: 100%;
+  background-size: auto 115% ;
+  height:25rem;
+  width: 20rem;
 }
 .copy{
   background-color:white;
