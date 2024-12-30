@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <audio ref="clickSound">
+    <audio ref="clickSound" id="nimade">
       <source src="../assets/music.mp3">
     </audio>
 
@@ -65,11 +65,12 @@ export default {
     })
     
     const clickFish = (event)=>{
+      let nimade = document.getElementById("nimade")
       cishi.value++
       // clickSound.value.currentTime = 0
       // clickSound.value.play()
-      mp3.value.currentTime = 0
-      mp3.value.play();
+      nimade.currentTime = 0
+      nimade.play();
       
 
       isHitting.value = false;
