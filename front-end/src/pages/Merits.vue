@@ -1,6 +1,6 @@
 <template>
   <div class="merits" ref="container">
-    <div>敲了{{ cishi }}次</div>
+    <Score/>
     <div @click="goBudda">Budda></div>
     <div style="position: absolute;bottom:4rem;height:10rem;width:10rem;">
       <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <audio ref="clickSound" id="nimade">
+    <audio ref="clickSound">
       <source src="../assets/music.mp3">
     </audio>
 
@@ -59,26 +59,17 @@ export default {
     const store = useMeritsStore();
     let popupId = 0;
     const mp3 = ref()
-    const cishi = ref(0)
 
     onBeforeMount(() => {
       mp3.value = new Howl({
         src: [mp3url],
         volume: 1.0,
-        onend: function() {
-          console.log('click');
-        }
+        html5: true
       })
     })
     
     const clickFish = (event)=>{
-      let nimade = document.getElementById("nimade")
-      cishi.value++
-      mp3.value.currentTime = 0
       mp3.value.play()
-      // nimade.currentTime = 0
-      // nimade.play();
-      
 
       isHitting.value = false;
       isHitting.value = true;
@@ -122,8 +113,7 @@ export default {
       removePopup,
       goBudda,
       store,
-      isHitting,
-      cishi
+      isHitting
     }
   }
 };
