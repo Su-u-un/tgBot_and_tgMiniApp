@@ -45,6 +45,7 @@ import { useRouter } from "vue-router";
 import { useMeritsStore } from "../store";
 import { Popup, Score } from "../components";
 import api from "../api";
+import { Howl } from 'howler'
 
 export default {
   components: { Popup, Score },
@@ -61,16 +62,19 @@ export default {
     const cishi = ref(0)
 
     onBeforeMount(() => {
-      mp3.value = new Audio(mp3url);
+      mp3.value = new Howl({
+        src: ['src/assets/music.mp3'],
+        volume: 1.0
+      })
     })
     
     const clickFish = (event)=>{
       let nimade = document.getElementById("nimade")
       cishi.value++
-      // clickSound.value.currentTime = 0
-      // clickSound.value.play()
-      nimade.currentTime = 0
-      nimade.play();
+      mp3.value.currentTime = 0
+      mp3.value.play()
+      // nimade.currentTime = 0
+      // nimade.play();
       
 
       isHitting.value = false;
@@ -82,11 +86,11 @@ export default {
       store.merits++
       store.stamina--
       
-      api.updateInfo({
-        id: store.user.id,
-        merits:store.merits ,
-        stamina:store.stamina
-      })
+      // api.updateInfo({
+      //   id: store.user.id,
+      //   merits:store.merits ,
+      //   stamina:store.stamina
+      // })
       // 生成弹出提示
       const x = event.clientX + 50
       const y = event.clientY - 100
