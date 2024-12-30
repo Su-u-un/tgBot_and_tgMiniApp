@@ -63,8 +63,11 @@ export default {
 
     onBeforeMount(() => {
       mp3.value = new Howl({
-        src: ['src/assets/music.mp3'],
-        volume: 1.0
+        src: [mp3url],
+        volume: 1.0,
+        onend: function() {
+          console.log('click');
+        }
       })
     })
     
