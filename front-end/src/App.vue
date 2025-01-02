@@ -45,7 +45,7 @@ onBeforeMount(() => {
     if(newDay(res.data.updateTime, loginTime)){
       res.data.stamina = 1000;
     }
-    store.info = res.data
+    store.setInfo(res.data)
   })
   // 获取用户任务状态
   api.getTask({id: store.user.id}).then((r) => {
