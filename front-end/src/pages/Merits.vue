@@ -80,11 +80,11 @@ export default {
       store.merits++
       store.stamina--
       
-      // api.updateInfo({
-      //   id: store.user.id,
-      //   merits:store.merits ,
-      //   stamina:store.stamina
-      // })
+      api.updateInfo({
+        id: store.user.id,
+        merits:store.merits ,
+        stamina:store.stamina
+      })
       // 生成弹出提示
       const x = event.clientX + 50
       const y = event.clientY - 100
