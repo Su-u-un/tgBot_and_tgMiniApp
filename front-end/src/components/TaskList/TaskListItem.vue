@@ -28,7 +28,7 @@ const click = () => {
     api.joinTg({
       id: store.user.id
     }).then((r) => {
-      if(r.code === 200){
+      if(r.data.code === 200){
         store.merits = store.merits + 2000
         store.task.joinTg = 1
         props.done = 1
@@ -42,7 +42,7 @@ const click = () => {
     api.followX({
       id: store.user.id
     }).then((r) => {
-      if(r.code === 200){
+      if(r.data.code === 200){
         store.merits = store.merits + 2000
         store.task.followX = 1
         props.done = 1
