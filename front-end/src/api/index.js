@@ -14,7 +14,7 @@ export default {
     params:data
   }),
   // 更新用户功德体力
-  updateInfo: (data) => request.get('/update',data),
+  updateInfo: (data) => request.post('/update',data),
   // 做tg任务
   joinTg: (data) => request.get('/joinTg',{
     params:data
