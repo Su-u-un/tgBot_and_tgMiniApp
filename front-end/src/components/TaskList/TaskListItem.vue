@@ -31,6 +31,7 @@ const click = () => {
       if(r.code === 200){
         store.merits = store.merits + 2000
         store.task.joinTg = 1
+        props.done = 1
         window.location.href = props.link
       }else{
         console.log(r.message);
@@ -44,6 +45,7 @@ const click = () => {
       if(r.code === 200){
         store.merits = store.merits + 2000
         store.task.followX = 1
+        props.done = 1
         window.location.href = props.link
       }else{
         console.log(r.message);
