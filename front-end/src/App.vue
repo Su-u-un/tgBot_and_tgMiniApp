@@ -47,6 +47,13 @@ onBeforeMount(() => {
     }
     store.setInfo(res.data)
   })
+  // 获取用户任务状态
+  api.getTask({id: store.user.id}).then((r) => {
+    const res = r.data
+    store.task = res.data
+  })
+  
+
 })
 
 

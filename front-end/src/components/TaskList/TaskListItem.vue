@@ -12,28 +12,43 @@
           </div>
         </div>
       </div>
-      <div class="btn" @click="click">START</div>
-    </div> 
+      <div class="btn" @click="click" :style="{opacity: props.done ? 0.5 : 1}">{{ props.done ? 'DONE' : 'START'}}</div>
+    </div>
 </template>
 
 <script setup>
 import { useMeritsStore } from "../../store";
+import api from "../../api";
 
-const props = defineProps(['label','link','image', 'type'])
+const props = defineProps(['label','link','image', 'type', 'done'])
 const store = useMeritsStore();
 
 const click = () => {
-  if(!store.clickTg && props.type == 'tg'){
-    store.merits = store.merits + 2000
-    store.clickTg = true
-    window.location.href = props.link
-    return
+  if(!props.done && props.type == 'tg'){
+    api.joinTg({
+      id: store.user.id
+    }).then((r) => {
+      if(r.code === 200){
+        store.merits = store.merits + 2000
+        store.task.joinTg = 1
+        window.location.href = props.link
+      }else{
+        console.log(r.message);
+      }
+    })
   }
-  if(!store.clickX && props.type == 'x'){
-    store.merits = store.merits + 2000
-    store.clickX = true
-    window.location.href = props.link
-    return
+  else if(!props.done && props.type == 'x'){
+    api.followX({
+      id: store.user.id
+    }).then((r) => {
+      if(r.code === 200){
+        store.merits = store.merits + 2000
+        store.task.followX = 1
+        window.location.href = props.link
+      }else{
+        console.log(r.message);
+      }
+    })
   }
 }
 

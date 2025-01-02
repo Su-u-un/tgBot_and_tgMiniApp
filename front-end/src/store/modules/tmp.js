@@ -3,10 +3,9 @@ import { defineStore } from 'pinia'
 export const useMeritsStore = defineStore('merits', {
   state: () => ({
     user:{},
+    task: {},
     merits: 0,
     stamina: 1000,
-    clickTg:false,
-    clickX:false
   }),
   actions: {
     setInfo(info) {
