@@ -35,9 +35,14 @@ onBeforeMount(() => {
           const userInfo = JSON.parse(user); // 转换为 JSON 对象
           store.user=userInfo
       }
-  } 
+  } else{
+    store.user={ id:1 }
+  }
   // 用户初始化
-  api.getUser({id: store.user.id,username: store.user.first_name})
+  api.getUser({id: store.user.id,username: store.user.first_name}).then((r) => {
+    const res = r.data
+    store.click = res.data.click
+  })
   // 获取用户功德体力
   api.getInfo({id: store.user.id}).then((r) => {
     const res = r.data

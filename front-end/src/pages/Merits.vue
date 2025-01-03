@@ -77,7 +77,7 @@ export default {
         isHitting.value = false;
       },100)
 
-      store.merits++
+      store.merits=Number(store.merits) + Number(store.click.value)
       store.stamina--
       
       api.updateInfo({

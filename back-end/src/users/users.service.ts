@@ -16,6 +16,11 @@ export class UsersService {
     return this.usersRepository.query(`select * from user where id=${id}`);
   }
 
+  async getAttr(id:string): Promise<any> {
+    const t = await this.usersRepository.query(`select * from user where id=${id}`);
+    return this.usersRepository.query(`select * from attr where level=${t[0].click} and type='click'`);
+  }
+
   async createUser(user: any): Promise<any> {
     const time = timestamp()
     // 用户功德

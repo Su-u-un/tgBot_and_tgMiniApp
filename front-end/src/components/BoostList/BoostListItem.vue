@@ -9,7 +9,7 @@
           
           <div style="display:flex;align-items:center;gap:0.3rem">
             <img alt="" src="../../assets//images/tasks/gongde.png" style="max-width:1.2rem;max-height:1.2rem">
-            2k<span style="color:#dfc587"> - level1</span>
+            {{ props.type==='click' ? store.click.cost : 20 }}<span style="color:#dfc587"> - level{{ props.type==='click' ? store.click.level : 1 }}</span>
           </div>
         </div>
       </div>
@@ -19,8 +19,11 @@
 </template>
 
 <script setup>
+import { useMeritsStore } from "../../store";
 import arrow from '../../assets/images/boosts/arrow.png'
-const props = defineProps(['label','image'])
+const props = defineProps(['label','image', 'type'])
+
+const store = useMeritsStore();
 </script>
 
 <style scoped>

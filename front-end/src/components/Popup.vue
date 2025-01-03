@@ -1,46 +1,38 @@
 <template>
   <div class="popup" :style="style">
-    +1
+    +{{store.click.value}}
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    initialX: {
-      type: Number,
-      default: 0
-    },
-    initialY: {
-      type: Number,
-      default: 0
-    }
-  },
-  data() {
-    return {
-      style: {
+<script setup>
+import { ref,onMounted } from 'vue';
+import { useMeritsStore } from "../store";
+const store = useMeritsStore();
+const emit = defineEmits(['ended']);
+
+const props = defineProps(['initialX','initialY'])
+
+const style = ref({
         position: 'absolute',
-        left: `${this.initialX}px`,
-        top: `${this.initialY}px`,
+        left: `${props.initialX}px`,
+        top: `${props.initialY}px`,
         opacity: 1,
         transition: 'transform 1s ease-out, opacity 1s ease-out',
         transform: 'translateY(0)'
-      }
-    }
-  },
-  mounted() {
-    // 开始动画
+      })
+
+
+  onMounted(() => {
     requestAnimationFrame(() => {
-      this.style.transform = 'translateY(-50px)';
-      this.style.opacity = 0;
+      style.value.transform = 'translateY(-50px)';
+      style.value.opacity = 0;
     });
 
     // 动画结束后触发事件，告知父组件移除
     setTimeout(() => {
-      this.$emit('ended');
+      emit('ended')
     }, 1000); // 与CSS动画时间一致
-  }
-}
+  })
 </script>
 
 <style scoped>

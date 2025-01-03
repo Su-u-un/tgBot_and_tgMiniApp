@@ -22,5 +22,9 @@ export default {
   // 做x任务
   followX: (data) => request.get('/followX',{
     params:data
+  }),
+  // 升级click
+  upgradeClick: (data) => request.get('/upgradeClick',{
+    params:data
   })
 }
