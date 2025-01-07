@@ -16,9 +16,14 @@ export class UsersService {
     return this.usersRepository.query(`select * from user where id=${id}`);
   }
 
-  async getAttr(id:string): Promise<any> {
+  async getClick(id:string): Promise<any> {
     const t = await this.usersRepository.query(`select * from user where id=${id}`);
     return this.usersRepository.query(`select * from attr where level=${t[0].click} and type='click'`);
+  }
+
+  async getLimit(id:string): Promise<any> {
+    const t = await this.usersRepository.query(`select * from user where id=${id}`);
+    return this.usersRepository.query(`select * from attr where level=${t[0].limitt} and type='limit'`);
   }
 
   async createUser(user: any): Promise<any> {

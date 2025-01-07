@@ -45,4 +45,35 @@ export class AttrController {
         })
     }
   }
+
+  @Get('upgradeLimit')
+  async upgradeLimit(@Query() data: any, @Response() res:any): Promise<any> {
+    // 查询功德
+    const info = await this.attrService.getInfo(data.id)
+    // 查询所需花费
+    const limit = await this.attrService.getLimit(data.id)
+    const tmp = Number(info[0].merits)-Number(limit[0].cost)
+    if(tmp<0) return res.send({code: 400, message: 'merits not enough'})
+    else{
+      // 满足升级条件
+      // 更新功德
+      const r = await this.attrService.setMerits(data.id,tmp)
+      // 升级属性
+      const e = await this.attrService.setLimit(data.id,Number(limit[0].level)+1)
+      // 获取下一级的花费
+      const nextLimit = await this.attrService.getLimit(data.id)
+      if(!r.affectedRows || !e.affectedRows) return res.send({code: 500, message: 'serve error'})
+      else 
+        return res.send({
+          code: 200, 
+          data:{
+            level:nextLimit[0].level,
+            cost:nextLimit[0].cost,
+            value:nextLimit[0].value,
+            merits:tmp
+          },
+          message: 'success'
+        })
+    }
+  }
 }

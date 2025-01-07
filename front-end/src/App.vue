@@ -42,13 +42,14 @@ onBeforeMount(() => {
   api.getUser({id: store.user.id,username: store.user.first_name}).then((r) => {
     const res = r.data
     store.click = res.data.click
+    store.limit = res.data.limit
   })
   // 获取用户功德体力
   api.getInfo({id: store.user.id}).then((r) => {
     const res = r.data
     const loginTime = new Date().getTime()
     if(newDay(res.data.updateTime, loginTime)){
-      res.data.stamina = 1000;
+      res.data.stamina = store.limit.value;
     }
     store.setInfo(res.data)
   })

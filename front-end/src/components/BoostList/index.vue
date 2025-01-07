@@ -1,11 +1,13 @@
 <template>
   <div id="list">
     <div style="display:flex;flex-direction:column;gap:1rem">
-      <BoostListItem label="Multi-Click" :image="click" @click="clickClick" type="click"/>
-      <BoostListItem label="Energy Recovery" :image="energy" type="energy"/>
+      <BoostListItem label="Multi-Click" :image="click" type="click" :cost="store.click.cost" :level="store.click.level"/>
+      <BoostListItem label="Energy Limit" :image="energy" type="limit" :cost="store.limit.cost" :level="store.limit.level"/>
       <BoostListItem label="Fast Recovery" :image="fast" type="fast"/>
       <BoostListItem label="Auto-Budda" :image="budda" type="budda"/>
-      <el-drawer v-model="isshow"  direction="btt" size="30rem" :with-header="false" style="background-color: #fffff3;border-top-left-radius: 2rem;border-top-right-radius: 2rem;">
+
+
+      <!-- <el-drawer v-model="isshow"  direction="btt" size="30rem" :with-header="false" style="background-color: #fffff3;border-top-left-radius: 2rem;border-top-right-radius: 2rem;">
         <div class="drawerBody">
           <div class="quit" @click="quit"></div>
           <img src="../../assets/images/boosts/clickPopup.png" alt="" style="width:13rem;height:13rem;">
@@ -29,7 +31,7 @@
           </div>
           <div @click="quitTip" class="quitTip"></div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -45,57 +47,6 @@ import budda from '../../assets/images/boosts/budda.png'
 import api from '../../api';
 import { useMeritsStore } from '../../store';
 const store = useMeritsStore();
-
-const isshow = ref(false)
-const tipShow = ref(false)
-
-const tipLabel = ref('')
-const tipContent = ref('')
-
-const clickClick = () => {
-  isshow.value = true
-}
-
-const quit = () => {
-  isshow.value = false
-}
-
-const quitTip = () => { 
-  tipShow.value = false
-}
-
-const buy = () => {
-  // 向后端发起请求，执行升级
-  api.upgradeClick({
-    id: store.user.id
-  }).then((r) => {
-    const res = r.data
-    if(res.code === 200){
-      store.click.level = res.data.level
-      store.click.cost = res.data.cost
-      store.click.value = res.data.value
-      store.merits = res.data.merits
-
-      tipLabel.value = 'Congratulations!'
-      tipContent.value = 'Reward received'
-
-      tipShow.value = true
-      setTimeout(() => {
-        tipShow.value = false
-      },1000)
-    }
-    else{
-
-      tipLabel.value = 'Incomplete'
-      tipContent.value = 'Failed'
-
-      tipShow.value = true
-      setTimeout(() => {
-        tipShow.value = false
-      },1000)
-    }
-  })
-}
 
 </script>
 

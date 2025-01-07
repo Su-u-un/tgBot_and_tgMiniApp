@@ -29,13 +29,20 @@ export class UsersController {
               level:1,
               cost:100,
               value:1,
+            },
+            limit:{
+              level:1,
+              cost:100,
+              value:1000,
             }
           },
           message: 'success'
         });
       }
       // 获取点击等级和数值
-      const click = await this.usersService.getAttr(data.id)
+      const click = await this.usersService.getClick(data.id)
+      // 获取体力值上限和数值
+      const limit = await this.usersService.getLimit(data.id)
 
       return res.send({
         code: 200,
@@ -44,7 +51,12 @@ export class UsersController {
           click:{
             level:click[0].level,
             cost:click[0].cost,
-            value:click[0].value
+            value:click[0].value,
+          },
+          limit:{
+            level:limit[0].level,
+            cost:limit[0].cost,
+            value:limit[0].value,
           }
         },
         message: 'success'

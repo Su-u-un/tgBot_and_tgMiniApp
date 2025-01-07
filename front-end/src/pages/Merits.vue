@@ -19,7 +19,7 @@
       <div class="life">
         <img style="height:1.5rem;margin-right:0.5rem" src="../assets/images/merits/Rectangle-3.png" alt="" >
         <div>
-          <span>{{ store.stamina }}/1000</span>
+          <span>{{ store.stamina }}/{{ store.limit.value }}</span>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
     <van-progress 
       class="progress"
-      :percentage="store.stamina / 1000 * 100" 
+      :percentage="store.stamina / store.limit.value * 100" 
       stroke-width="8" 
       :show-pivot="false" 
       track-color="#816b51"

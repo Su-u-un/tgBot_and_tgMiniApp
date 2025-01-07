@@ -19,11 +19,19 @@ export class AttrService {
     return this.attrRepository.query(`select * from attr where level=${t[0].click} and type='click'`);
   }
 
+  async getLimit(id:string): Promise<any> {
+    const t = await this.attrRepository.query(`select * from user where id=${id}`);
+    return this.attrRepository.query(`select * from attr where level=${t[0].limitt} and type='limit'`);
+  }
+
   async setMerits(id:string,merits:any): Promise<any> {
     return this.attrRepository.query(`update info set merits=${merits} where id=${id}`);
   }
 
   async setClick(id:string,level:number): Promise<any> {
     return this.attrRepository.query(`update user set click=${level} where id=${id}`);
+  }
+  async setLimit(id:string,level:number): Promise<any> {
+    return this.attrRepository.query(`update user set limitt=${level} where id=${id}`);
   }
 }

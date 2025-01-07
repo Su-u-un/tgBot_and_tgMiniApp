@@ -26,5 +26,9 @@ export default {
   // 升级click
   upgradeClick: (data) => request.get('/upgradeClick',{
     params:data
+  }),
+  // 升级体力值上限
+  upgradeLimit: (data) => request.get('/upgradeLimit',{
+    params:data
   })
 }

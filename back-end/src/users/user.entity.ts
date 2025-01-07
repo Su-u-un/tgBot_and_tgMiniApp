@@ -13,4 +13,7 @@ export class User {
 
   @Column({ default: 1 })
   click: number;
+
+  @Column({ default: 1 })
+  limitt: number;
 }

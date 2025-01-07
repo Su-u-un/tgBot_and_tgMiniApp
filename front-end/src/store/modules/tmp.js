@@ -6,6 +6,7 @@ export const useMeritsStore = defineStore('merits', {
     task: {},
     merits: 0,
     stamina: 1000,
+    limit:{},
     click:{},
   }),
   actions: {
