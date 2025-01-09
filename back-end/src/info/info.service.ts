@@ -17,6 +17,6 @@ export class InfoService {
 
   async update(data:any): Promise<Info[]> {
     const time = timestamp()
-    return this.infoRepository.query(`update info set merits=${data.merits},stamina=${data.stamina},updateTime='${time}' where id=${data.id}`);
+    return this.infoRepository.query(`update info set merits=${data.merits},stamina=${data.stamina},today='${data.today}',updateTime='${time}' where id=${data.id}`);
   }
 }

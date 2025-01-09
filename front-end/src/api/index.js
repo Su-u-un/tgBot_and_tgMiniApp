@@ -23,6 +23,10 @@ export default {
   followX: (data) => request.get('/followX',{
     params:data
   }),
+  // 活跃任务
+  today: (data) => request.get('/today',{
+    params:data
+  }),
   // 升级click
   upgradeClick: (data) => request.get('/upgradeClick',{
     params:data

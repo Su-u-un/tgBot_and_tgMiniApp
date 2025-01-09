@@ -13,4 +13,7 @@ export class Info {
 
   @Column({ type: 'varchar' })
   updateTime: string;
+
+  @Column({ type: 'varchar' })
+  today: string;
 }

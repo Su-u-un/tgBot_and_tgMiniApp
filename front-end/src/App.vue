@@ -49,7 +49,10 @@ onBeforeMount(() => {
     const res = r.data
     const loginTime = new Date().getTime()
     if(newDay(res.data.updateTime, loginTime)){
+      // 回满体力到上限
       res.data.stamina = store.limit.value;
+      // 清空每日点击
+      res.data.today = 0
     }
     store.setInfo(res.data)
   })

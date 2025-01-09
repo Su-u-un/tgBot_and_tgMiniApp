@@ -27,12 +27,13 @@ export class InfoController {
   }
 
   @Post('update')
-  update(@Body() body: any): any {
+  update(@Body() body: any, @Response() res:any): any {
     this.infoService.update(body).then((r) => {
-      return {
+      return res.send({
         code: 200,
+        data: r[0],
         message: 'success'
-      };
+      });
     });
   }
 }

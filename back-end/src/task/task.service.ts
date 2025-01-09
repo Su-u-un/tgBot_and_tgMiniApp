@@ -32,4 +32,17 @@ export class TaskService {
     // 任务已完成
     return this.taskRepository.query(`update task set followX = 1 where id=${id};`);
   }
+  async today(data:any): Promise<any> {
+    // 加功德
+    if(data.type === 'todayTen') this.taskRepository.query(`update info set merits = CONVERT(merits, SIGNED) + 5 where id=${data.id};`)
+    else if(data.type === 'todayHundred') this.taskRepository.query(`update info set merits = CONVERT(merits, SIGNED) + 50 where id=${data.id};`)
+    else if(data.type === 'todayThousand') this.taskRepository.query(`update info set merits = CONVERT(merits, SIGNED) + 500 where id=${data.id};`)
+
+    // 任务已完成
+    return this.taskRepository.query(`update task set ${data.type} = 1 where id=${data.id};`);
+  }
+
+  async getInfo(id:string): Promise<any> {
+    return this.taskRepository.query(`select * from info where id=${id}`);
+  }
 }

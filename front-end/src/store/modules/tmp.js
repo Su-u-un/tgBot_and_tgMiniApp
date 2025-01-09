@@ -6,6 +6,7 @@ export const useMeritsStore = defineStore('merits', {
     task: {},
     merits: 0,
     stamina: 1000,
+    today:0,
     limit:{},
     click:{},
   }),
@@ -13,6 +14,7 @@ export const useMeritsStore = defineStore('merits', {
     setInfo(info) {
       this.merits = info.merits
       this.stamina = info.stamina
+      this.today = info.today
     },
     addMerits() {
       this.merits+=1

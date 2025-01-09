@@ -77,13 +77,15 @@ export default {
         isHitting.value = false;
       },100)
 
-      store.merits=Number(store.merits) + Number(store.click.value)
+      store.merits= Number(store.merits) + Number(store.click.value)
+      store.today = Number(store.today) + Number(store.click.value)
       store.stamina--
       
       api.updateInfo({
         id: store.user.id,
         merits: store.merits,
-        stamina: store.stamina
+        stamina: store.stamina,
+        today: store.today
       })
       // 生成弹出提示
       const x = event.clientX + 50
