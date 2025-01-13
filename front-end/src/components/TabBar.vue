@@ -1,6 +1,6 @@
 <template>
   <div class="frame" :style="{ display: display ? 'flex' : 'none' }">
-    <router-link v-for="item in tabs" :key="item.path" :to="item.path === '/friend'? null : item.path">
+    <router-link v-for="item in tabs" :key="item.path" :to="item.path === '/friend'? '' : item.path">
       <div :class="{ active: isActive(item.path), overlapGroupWrapper: item.path === '/friend'? false : true }"  >
         <div style="height:100%;position: absolute;color: #fff;font-size: 1.1rem;padding-top: 0.8rem;text-align: center;backgroundColor: #48413b99;" :style="{ display: item.path === '/friend'? 'flex' : 'none' }">
           Coming<br>soon
