@@ -42,7 +42,25 @@ export class TaskService {
     return this.taskRepository.query(`update task set ${data.type} = 1 where id=${data.id};`);
   }
 
+  async resetToday(id:string): Promise<any> {
+    // 重置每日任务
+    return this.taskRepository.query(`update task set todayTen = 0,todayHundred = 0,todayThousand = 0 where id=${id};`);
+  }
+
   async getInfo(id:string): Promise<any> {
     return this.taskRepository.query(`select * from info where id=${id}`);
+  }
+
+  async useHeal(id:string): Promise<any> {
+    // 获取体力值上限
+    const user = await this.taskRepository.query(`select * from user where id=${id}`);
+    const t = this.taskRepository.query(`select * from attr where level=${user[0].limitt} and type='limit'`);
+    // 恢复体力值
+    return this.taskRepository.query(`update info set stamina = t[0].value  where id=${id};`);
+  }
+
+  async resetHeal(id:string): Promise<any> {
+    // 重置体力值
+    return this.taskRepository.query(`update task set heal = 3 where id=${id};`);
   }
 }

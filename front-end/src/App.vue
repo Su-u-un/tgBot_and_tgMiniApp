@@ -53,6 +53,8 @@ onBeforeMount(() => {
       res.data.stamina = store.limit.value;
       // 清空每日点击
       res.data.today = 0
+      // 清空点击任务
+      api.resetToday({id: store.user.id})
     }
     store.setInfo(res.data)
   })

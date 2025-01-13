@@ -1,8 +1,11 @@
 <template>
   <div class="frame" :style="{ display: display ? 'flex' : 'none' }">
-    <router-link v-for="item in tabs" :key="item.path" :to="item.path">
-      <div :class="{ active: isActive(item.path) }" class="overlap-group-wrapper"  >
-        <div class="overlap-group" >
+    <router-link v-for="item in tabs" :key="item.path" :to="item.path === '/friend'? null : item.path">
+      <div :class="{ active: isActive(item.path), overlapGroupWrapper: item.path === '/friend'? false : true }"  >
+        <div style="height:100%;position: absolute;color: #fff;font-size: 1.1rem;padding-top: 0.8rem;text-align: center;backgroundColor: #48413b99;" :style="{ display: item.path === '/friend'? 'flex' : 'none' }">
+          Coming<br>soon
+        </div>
+        <div class="overlap-group" :class="{ overlapGroupWrapper: item.path === '/friend'? true : false }">
           <img class="img" :alt="item.label" :src="item.img" />
           <div class="text-wrapper">{{ item.label }}</div>
         </div>
@@ -12,12 +15,12 @@
 </template>
 
 <script>
-import { ref, onBeforeMount } from 'vue';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import Merits from "../assets/images/Frame-13.svg";
 import BOOSTS from "../assets/images/Frame-14.svg";
 import TASKS from "../assets/images/Frame-15.svg";
-import GAMES from "../assets/images/Frame-16.svg";
+import AGENTS from "../assets/images/Frame-16.svg";
 import friend from "../assets/images/friend-1.svg";
 
 export default {
@@ -30,7 +33,7 @@ export default {
       { path: '/tasks', label: 'TASKS' , img: TASKS},
       { path: '/merits', label: 'MERITS+' , img: Merits},
       { path: '/boosts', label: 'BOOSTS' , img: BOOSTS},
-      { path: '/games', label: 'GAMES' , img: GAMES},
+      { path: '/games', label: 'AGENTS' , img: AGENTS},
     ];
 
     const pattern = /^\/[^/]+/;
@@ -70,7 +73,7 @@ export default {
   opacity: 1!important;
  }
 
-.frame .overlap-group-wrapper {
+.frame .overlapGroupWrapper {
   opacity: 0.6;
   position: relative;
 }

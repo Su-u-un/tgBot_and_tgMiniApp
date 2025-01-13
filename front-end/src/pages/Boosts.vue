@@ -4,20 +4,29 @@
     <div>
       <div class="label">Daily Boosts</div>
       <div class="daily">
-        <div class="item">
+        <div class="item" @click="bless">
           <div>
             <div class="title">Budda Bless</div>
-            <div>3/3</div>
+            <div style="display:flex;align-items:center;">
+              <img alt="" src="../assets//images/tasks/gongde.png" style="max-width:1rem;max-height:1rem;margin-left:0">
+              200 
+              <span style="margin-left:1rem;">{{store.bless}}/3</span>
+            </div>
           </div>
           <img src="../assets/images/boosts/burn.png" alt=""/>
         </div>
-        <div class="item">
+        <div class="item" @click="heal">
           <div>
             <div class="title">Budda Heal</div>
-            <div>3/3</div>
+            <div style="display:flex;align-items:center;">
+              <img alt="" src="../assets//images/tasks/gongde.png" style="max-width:1rem;max-height:1rem;margin-left:0">
+              200 
+              <span style="margin-left:1rem;">{{healTimes}}/3</span>
+            </div>
           </div>
           <img src="../assets/images/boosts/light.png" alt=""/>
         </div>
+        <BlessDrawer :isshow="isshow" @update:isshow="isshow = $event" @update:blessTimes="blessTimes = $event" :blessTimes="blessTimes"/>
       </div>
     </div>
     <div class="upgrade">
@@ -28,9 +37,27 @@
 </template>
 
 <script setup>
-import { BoostList, Score } from "../components";
+import { ref } from "vue";
+import BlessDrawer from '../components/BlessDrawer.vue'
+import { BoostList, Score, } from "../components";
+import { useMeritsStore } from "../store";
 
+const store = useMeritsStore();
+const isshow = ref(false)
+const healTimes = ref(3)
+const blessTimes = ref(3)
 
+const bless = () => {
+  isshow.value = true
+}
+const heal = () => {
+  if(healTimes.value <= 0) return
+  if(store.stamina == store.limit.value) return
+  healTimes.value--
+  store.merits = Number(store.merits) - 200
+  if(store.limit.value-store.stamina < 200) store.stamina = store.limit.value
+  else store.stamina = Number(store.stamina) + 200
+}
 </script>
 
 <style scoped>

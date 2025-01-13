@@ -27,6 +27,10 @@ export default {
   today: (data) => request.get('/today',{
     params:data
   }),
+  // 重置活跃任务
+  resetToday: (data) => request.get('/resetToday',{
+    params:data
+  }),
   // 升级click
   upgradeClick: (data) => request.get('/upgradeClick',{
     params:data

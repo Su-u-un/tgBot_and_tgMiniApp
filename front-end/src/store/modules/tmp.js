@@ -9,6 +9,7 @@ export const useMeritsStore = defineStore('merits', {
     today:0,
     limit:{},
     click:{},
+    bless:3,
   }),
   actions: {
     setInfo(info) {

@@ -11,6 +11,9 @@ export class Task {
   @Column({ default: false })
   followX: boolean;
 
+  @Column({ default: 3 })
+  heal: number;
+
   @Column({ default: false })
   todayTen: boolean;
 

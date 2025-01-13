@@ -108,4 +108,28 @@ export class TaskController {
       })
     }
   }
+
+  @Get('resetToday')
+  async resetToday(@Query() data: any, @Response() res:any): Promise<any> {
+    this.TaskService.resetToday(data.id)
+    return res.send({
+      code: 200, 
+      message: 'success'
+    })
+  }
+
+  // 使用一次体力值回满功能
+  async useHeal(@Query() data: any, @Response() res:any): Promise<any> {
+    // 校验次数
+    const task = this.TaskService.getTask(data)
+    // 不满足则返回错误
+    if(task[0].heal === 0) return res.send({code: 400, message: 'task done'})
+    // 满足则回满
+    else this.TaskService.useHeal(data)
+  }
+  // 重置体力值回满功能
+  async resetHeal(@Query() data: any, @Response() res:any): Promise<any> {
+    
+
+  }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <Score/>
-    <TaskBar class="bar"/>
+    <!-- <TaskBar class="bar"/> -->
     <router-view/>
   </div>
 </template>
@@ -17,5 +17,6 @@ import { TaskBar, Score } from "../components";
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap:5rem;
 }
 </style>
