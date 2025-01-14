@@ -14,6 +14,9 @@ export class Task {
   @Column({ default: 3 })
   heal: number;
 
+  @Column({ default: 3 })
+  bless: number;
+
   @Column({ default: false })
   todayTen: boolean;
 

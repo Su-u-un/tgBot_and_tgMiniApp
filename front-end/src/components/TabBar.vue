@@ -29,7 +29,7 @@ export default {
     const route = useRoute();
     const display = ref(true);
     const tabs = [
-      { path: '/friend', label: 'FRIEND' , img: friend},
+      // { path: '/friend', label: 'FRIEND' , img: friend},
       { path: '/tasks', label: 'TASKS' , img: TASKS},
       { path: '/merits', label: 'MERITS+' , img: Merits},
       { path: '/boosts', label: 'BOOSTS' , img: BOOSTS},
@@ -61,7 +61,7 @@ export default {
   gap: 1rem;
   justify-content: center;
   overflow: hidden;
-  width: 22rem;
+  width: 18rem;
   height:4.5rem;
   position: fixed;
   bottom: 3rem;

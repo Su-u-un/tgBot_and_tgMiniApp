@@ -55,6 +55,9 @@ onBeforeMount(() => {
       res.data.today = 0
       // 清空点击任务
       api.resetToday({id: store.user.id})
+      // 回满bless和heal
+      api.resetHeal({id: store.user.id})
+      api.resetBless({id: store.user.id})
     }
     store.setInfo(res.data)
   })

@@ -4,6 +4,8 @@
       <div class="drawerBody">
         <div class="quit" @click="quit"></div>
         <div style="font-size: 2rem;">Budda Bless</div>
+        <div>By paying 200 token , you will have a chance to win more !</div>
+        <div> Check below :</div>
         <div class="probability-container">
     <div class="probability-item">
       <div class="probability-text"><span>10%</span> <div>10<img alt="" src="../assets//images/tasks/gongde.png" style="max-width:0.9rem;max-height:0.9rem;margin-left:0"></div></div>
@@ -33,7 +35,7 @@
         <div class="btn" @click="buy">
             <img alt="" src="../assets//images/tasks/gongde.png" style="max-width:1rem;max-height:1rem;margin-left:0">
             200 
-            <span style="margin-left:1rem;">{{store.bless}}/3</span>
+            <span style="margin-left:1rem;">{{store.task.bless}}/3</span>
         </div>
       </div>
     </el-drawer>
@@ -110,7 +112,7 @@ function getRandomCoin() {
 
 
 const buy = ()=>{
-  if(store.merits < 200 || store.bless <= 0){
+  if(store.merits < 200 || store.task.bless <= 0){
     tipLabel.value = 'Incomplete'
     tipContent.value = 'Failed'
 
@@ -124,9 +126,18 @@ const buy = ()=>{
 
     const coin = getRandomCoin()
     store.merits += coin
-    store.bless -= 1
+    store.task.bless -= 1
     tipLabel.value = 'Congratulations'
     tipContent.value = 'GET '+coin
+    // 抽奖-1
+    api.bless({id: store.user.id})
+    // 直接更新后端的功德体力
+    api.updateInfo({
+      id: store.user.id,
+      merits: store.merits,
+      stamina: store.stamina,
+      today: store.today
+    })
 
     tipShow.value = true
     if(timer.value) clearTimeout(timer.value)
@@ -134,40 +145,6 @@ const buy = ()=>{
       tipShow.value = false
     },1000)
   }
-}
-
-
-const buyLimit = () => {
-  // 向后端发起请求，执行升级
-  api.upgradeLimit({
-    id: store.user.id
-  }).then((r) => {
-    const res = r.data
-    if(res.code === 200){
-      store.limit.level = res.data.level
-      store.limit.cost = res.data.cost
-      store.limit.value = res.data.value
-      store.merits = res.data.merits
-
-      tipLabel.value = 'Congratulations!'
-      tipContent.value = 'Reward received'
-
-      tipShow.value = true
-      setTimeout(() => {
-        tipShow.value = false
-      },1000)
-    }
-    else{
-
-      tipLabel.value = 'Incomplete'
-      tipContent.value = 'Failed'
-
-      tipShow.value = true
-      setTimeout(() => {
-        tipShow.value = false
-      },1000)
-    }
-  })
 }
 
 </script>
@@ -227,7 +204,7 @@ const buyLimit = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top:3rem;
+  margin-top:2rem;
   color:white;
   font-size:1.8rem;
 }
@@ -237,7 +214,7 @@ const buyLimit = () => {
       gap: 1.5rem;
       max-width: 15rem;
       margin: auto;
-      margin-top:2rem;
+      margin-top:1rem;
     }
     .probability-item {
       display: flex;

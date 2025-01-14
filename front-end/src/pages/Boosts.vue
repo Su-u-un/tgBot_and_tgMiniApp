@@ -10,7 +10,7 @@
             <div style="display:flex;align-items:center;">
               <img alt="" src="../assets//images/tasks/gongde.png" style="max-width:1rem;max-height:1rem;margin-left:0">
               200 
-              <span style="margin-left:1rem;">{{store.bless}}/3</span>
+              <span style="margin-left:1rem;">{{store.task.bless}}/3</span>
             </div>
           </div>
           <img src="../assets/images/boosts/burn.png" alt=""/>
@@ -21,12 +21,12 @@
             <div style="display:flex;align-items:center;">
               <img alt="" src="../assets//images/tasks/gongde.png" style="max-width:1rem;max-height:1rem;margin-left:0">
               200 
-              <span style="margin-left:1rem;">{{healTimes}}/3</span>
+              <span style="margin-left:1rem;">{{store.task.heal}}/3</span>
             </div>
           </div>
           <img src="../assets/images/boosts/light.png" alt=""/>
         </div>
-        <BlessDrawer :isshow="isshow" @update:isshow="isshow = $event" @update:blessTimes="blessTimes = $event" :blessTimes="blessTimes"/>
+        <BlessDrawer :isshow="isshow" @update:isshow="isshow = $event"/>
       </div>
     </div>
     <div class="upgrade">
@@ -41,22 +41,32 @@ import { ref } from "vue";
 import BlessDrawer from '../components/BlessDrawer.vue'
 import { BoostList, Score, } from "../components";
 import { useMeritsStore } from "../store";
+import api from "../api";
 
 const store = useMeritsStore();
 const isshow = ref(false)
-const healTimes = ref(3)
-const blessTimes = ref(3)
 
 const bless = () => {
   isshow.value = true
 }
 const heal = () => {
-  if(healTimes.value <= 0) return
+  if(store.task.heal <= 0 || store.merits < 200) return
   if(store.stamina == store.limit.value) return
-  healTimes.value--
+  store.task.heal -= 1
   store.merits = Number(store.merits) - 200
+
   if(store.limit.value-store.stamina < 200) store.stamina = store.limit.value
   else store.stamina = Number(store.stamina) + 200
+
+  // 体力回复-1
+  api.heal({id: store.user.id})
+  // 直接更新后端的功德体力
+  api.updateInfo({
+    id: store.user.id,
+    merits: store.merits,
+    stamina: store.stamina,
+    today: store.today
+  })
 }
 </script>
 

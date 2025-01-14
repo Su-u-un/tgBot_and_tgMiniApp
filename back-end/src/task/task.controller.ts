@@ -28,7 +28,9 @@ export class TaskController {
           followX:0,
           todayTen:0,
           todayHundred:0,
-          todayThousand:0
+          todayThousand:0,
+          heal:3,
+          bless:3
         },
         message: 'success'
       })
@@ -40,7 +42,9 @@ export class TaskController {
         followX:task[0].followX,
         todayTen:task[0].todayTen,
         todayHundred:task[0].todayHundred,
-        todayThousand:task[0].todayThousand
+        todayThousand:task[0].todayThousand,
+        heal:task[0].heal,
+        bless:task[0].bless
       },
       message: 'success'
     });
@@ -118,18 +122,43 @@ export class TaskController {
     })
   }
 
-  // 使用一次体力值回满功能
-  async useHeal(@Query() data: any, @Response() res:any): Promise<any> {
-    // 校验次数
-    const task = this.TaskService.getTask(data)
-    // 不满足则返回错误
-    if(task[0].heal === 0) return res.send({code: 400, message: 'task done'})
-    // 满足则回满
-    else this.TaskService.useHeal(data)
+  // 体力值回满-1
+  @Get('heal')
+  async heal(@Query() data: any, @Response() res:any): Promise<any> {
+    this.TaskService.heal(data.id)
+    return res.send({
+      code: 200, 
+      message: 'success'
+    })
   }
-  // 重置体力值回满功能
-  async resetHeal(@Query() data: any, @Response() res:any): Promise<any> {
-    
+  // 抽奖次数-1
+  @Get('bless')
+  async bless(@Query() data: any, @Response() res:any): Promise<any> {
+    this.TaskService.heal(data.id)
+    return res.send({
+      code: 200, 
+      message: 'success'
+    })
+  }
 
+  // 重置体力值回满功能
+  @Get('resetHeal')
+  async resetHeal(@Query() data: any, @Response() res:any): Promise<any> {
+    // 调用就直接重置这个的进度
+    this.TaskService.resetHeal(data.id)
+    return res.send({
+      code: 200, 
+      message: 'success'
+    })
+  }
+  // 重置抽奖功能
+  @Get('resetBless')
+  async resetBless(@Query() data: any, @Response() res:any): Promise<any> {
+    // 调用就直接重置这个的进度
+    this.TaskService.resetBless(data.id)
+    return res.send({
+      code: 200, 
+      message: 'success'
+    })
   }
 }

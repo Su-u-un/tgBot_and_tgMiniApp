@@ -51,16 +51,21 @@ export class TaskService {
     return this.taskRepository.query(`select * from info where id=${id}`);
   }
 
-  async useHeal(id:string): Promise<any> {
-    // 获取体力值上限
-    const user = await this.taskRepository.query(`select * from user where id=${id}`);
-    const t = this.taskRepository.query(`select * from attr where level=${user[0].limitt} and type='limit'`);
-    // 恢复体力值
-    return this.taskRepository.query(`update info set stamina = t[0].value  where id=${id};`);
+  async heal(id:string): Promise<any> {
+    return this.taskRepository.query(`update task set heal = CONVERT(heal, SIGNED) - 1  where id=${id};`);
+  }
+
+  async bless(id:string): Promise<any> {
+    return this.taskRepository.query(`update task set bless = CONVERT(bless, SIGNED) - 1  where id=${id};`);
   }
 
   async resetHeal(id:string): Promise<any> {
-    // 重置体力值
+    // 重置
     return this.taskRepository.query(`update task set heal = 3 where id=${id};`);
+  }
+
+  async resetBless(id:string): Promise<any> {
+    // 重置
+    return this.taskRepository.query(`update task set bless = 3 where id=${id};`);
   }
 }

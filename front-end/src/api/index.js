@@ -38,5 +38,21 @@ export default {
   // 升级体力值上限
   upgradeLimit: (data) => request.get('/upgradeLimit',{
     params:data
+  }),
+  // 体力值回满-1
+  heal: (data) => request.get('/heal',{
+    params:data
+  }),
+  // 抽奖次数-1
+  bless: (data) => request.get('/bless',{
+    params:data
+  }),
+  // 重置功德值回满
+  resetHeal: (data) => request.get('/resetHeal',{
+    params:data
+  }),
+  // 重置抽奖次数
+  resetBless: (data) => request.get('/resetBless',{
+    params:data
   })
 }
