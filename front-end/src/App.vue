@@ -58,13 +58,34 @@ onBeforeMount(() => {
       // 回满bless和heal
       api.resetHeal({id: store.user.id})
       api.resetBless({id: store.user.id})
+      // 获取用户任务状态
+      api.getTask({id: store.user.id}).then((r) => {
+        const res = r.data
+        store.task = {
+          joinTg: res.data.joinTg,
+          followX: res.data.followX,
+          todayTen: 0,
+          todayHundred: 0,
+          todayThousand: 0,
+          heal: 3,
+          bless: 3
+        }
+      })
+    }else{
+      // 获取用户任务状态
+      api.getTask({id: store.user.id}).then((r) => {
+        const res = r.data
+        store.task = res.data
+      })
     }
     store.setInfo(res.data)
-  })
-  // 获取用户任务状态
-  api.getTask({id: store.user.id}).then((r) => {
-    const res = r.data
-    store.task = res.data
+    // 更新功德体力
+    api.updateInfo({
+        id: store.user.id,
+        merits: store.merits,
+        stamina: store.stamina,
+        today: store.today
+      })
   })
   
 

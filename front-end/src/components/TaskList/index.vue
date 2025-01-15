@@ -2,9 +2,9 @@
   <div id="list" >
     <TaskListItem label="Join TG Community" link="https://t.me/aibuddaofficial" :image="tg" type="tg" :done="store.task.joinTg" reward="2k"/>
     <TaskListItem label="Follow X" link="https://x.com/aibuddablessu" :image="x" type="x" :done="store.task.followX" reward="2k"/>
-    <TaskListItem label="click 10" link="todayTen" :image="click" type="today" :done="store.task.todayTen" reward="5"/>
-    <TaskListItem label="click 100" link="todayHundred" :image="click" type="today" :done="store.task.todayHundred" reward="50"/>
-    <TaskListItem label="click 1000" link="todayThousand" :image="click" type="today" :done="store.task.todayThousand" reward="500"/>
+    <TaskListItem label="Daily Mission: Click 10 time" link="todayTen" :image="click" type="today" :done="store.task.todayTen" reward="5"/>
+    <TaskListItem label="Daily Mission: Click 100 time" link="todayHundred" :image="click" type="today" :done="store.task.todayHundred" reward="50"/>
+    <TaskListItem label="Daily Mission: Click 1000 time" link="todayThousand" :image="click" type="today" :done="store.task.todayThousand" reward="500"/>
     <!-- <TaskListItem label="Like and Repost on X"/> -->
   </div>
 </template>
