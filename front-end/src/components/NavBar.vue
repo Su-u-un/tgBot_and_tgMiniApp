@@ -13,7 +13,6 @@ import More from './More.vue';
 
 <style scoped>
 .container{
-  border: 0.5px solid red;
   display: flex;
   justify-content: center;
   width: 100%;
