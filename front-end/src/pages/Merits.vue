@@ -138,7 +138,6 @@ export default {
   transform: rotate(10deg); /* 敲击的旋转角度 */
 }
 .merits {
-  border: 0.5px solid blue;
   position: relative;
   display: flex;
   align-items: center;
