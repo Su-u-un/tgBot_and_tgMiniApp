@@ -27,6 +27,7 @@
           <img src="../assets/images/boosts/light.png" alt=""/>
         </div>
         <BlessDrawer :isshow="isshow" @update:isshow="isshow = $event"/>
+        <HealDrawer :isshowHeal="isshowHeal" @update:isshowHeal="isshowHeal = $event"/>
       </div>
     </div>
     <div class="upgrade">
@@ -39,34 +40,21 @@
 <script setup>
 import { ref } from "vue";
 import BlessDrawer from '../components/BlessDrawer.vue'
+import HealDrawer from '../components/HealDrawer.vue'
+
 import { BoostList, Score, } from "../components";
 import { useMeritsStore } from "../store";
 import api from "../api";
 
 const store = useMeritsStore();
 const isshow = ref(false)
+const isshowHeal = ref(false)
 
 const bless = () => {
   isshow.value = true
 }
 const heal = () => {
-  if(store.task.heal <= 0 || store.merits < 200) return
-  if(store.stamina == store.limit.value) return
-  store.task.heal -= 1
-  store.merits = Number(store.merits) - 200
-
-  if(store.limit.value-store.stamina < 200) store.stamina = store.limit.value
-  else store.stamina = Number(store.stamina) + 200
-
-  // 体力回复-1
-  api.heal({id: store.user.id})
-  // 直接更新后端的功德体力
-  api.updateInfo({
-    id: store.user.id,
-    merits: store.merits,
-    stamina: store.stamina,
-    today: store.today
-  })
+  isshowHeal.value = true
 }
 </script>
 

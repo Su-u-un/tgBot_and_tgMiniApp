@@ -1,9 +1,9 @@
 <template>
   <div id="list">
     <div style="display:flex;flex-direction:column;gap:1rem">
-      <BoostListItem label="Multi-Click" :image="click" type="click" :cost="store.click.cost" :level="store.click.level"/>
-      <BoostListItem label="Energy Limit" :image="energy" type="limit" :cost="store.limit.cost" :level="store.limit.level"/>
-      <BoostListItem label="Fast Recovery" :image="fast" type="fast"/>
+      <BoostListItem label="Multi-Click" :image="click" type="click" :cost="store.click.cost" :level="store.click.level" :text="mutilText"/>
+      <BoostListItem label="Energy-Limit" :image="energy" type="limit" :cost="store.limit.cost" :level="store.limit.level" :text="limitText"/>
+      <BoostListItem label="Fast-Recovery" :image="fast" type="fast"/>
       <BoostListItem label="Auto-Budda" :image="budda" type="budda"/>
 
 
@@ -48,6 +48,8 @@ import api from '../../api';
 import { useMeritsStore } from '../../store';
 const store = useMeritsStore();
 
+const mutilText = ref('Multi-Click allows you to earn more points with every click. Each upgrade increases the rewards, making it easier and faster to reach your goals.')
+const limitText = ref('Energy-Limit increases the maximum stamina, allowing you to store more energy and extend your activity time.')
 </script>
 
 <style scoped>

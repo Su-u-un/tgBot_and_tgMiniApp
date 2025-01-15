@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app1">
     <NavBar/>
     <div class="view">
       <router-view/>
@@ -95,7 +95,7 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
-#app {
+#app1 {
   display: flex;
   flex-direction: column;
   align-items: center;

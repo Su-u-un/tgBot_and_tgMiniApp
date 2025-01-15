@@ -15,7 +15,8 @@
       </div>
     </div>
     <img class="btn" :src="arrow" alt="">
-    <BoostDrawer :isshow="isshow" :type="props.type" :imgPopup="img" :label="props.label" :cost="props.cost" :level="props.level" @update:isshow="updateShowModal"/>
+    <BoostDrawer :isshow="isshow" :type="props.type" :imgPopup="img" :label="props.label" :cost="props.cost" :level="props.level" @update:isshow="updateShowModal"
+    :text="props.text"/>
   </div> 
 </template>
 
@@ -27,7 +28,7 @@ import { ref } from 'vue';
 import clickPopup from '../../assets/images/boosts/clickPopup.png'
 import limitPopup from '../../assets/images/boosts/limitPopup.png'
 const store = useMeritsStore();
-const props = defineProps(['label','image', 'type', 'cost', 'level'])
+const props = defineProps(['label','image', 'type', 'cost', 'level','text'])
 
 const isshow = ref(false)
 const img = ref('')
