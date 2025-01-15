@@ -96,11 +96,13 @@ onBeforeMount(() => {
 
 <style scoped>
 #app {
+  border: 0.5px solid yellow;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .view{
+  border: 0.5px solid red;
   width: 100%;
   height: 100%;
   overflow: hidden;
