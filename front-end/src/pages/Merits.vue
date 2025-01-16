@@ -149,7 +149,7 @@ export default {
   background: url(../assets/images/merits/people.png) no-repeat center center;
   background-size: auto 115% ;
   height:30rem;
-  width: 20rem;
+  width: 22rem;
 }
 .life-wrap{
   position: absolute;
