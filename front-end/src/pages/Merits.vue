@@ -1,7 +1,7 @@
 <template>
   <div class="merits" ref="container">
     <Score/>
-    <div @click="goBudda">Budda></div>
+    <!-- <div @click="goBudda">Budda></div> -->
     <div style="position: absolute;bottom:4rem;height:10rem;width:10rem;">
       <img class="fish" src="../assets/images/merits/fish.png" alt="" @click="clickFish"/>
       <img class="sticks" :class="{ 'animate-hit': isHitting }"  src="../assets/images/merits/sticks.png" alt="" @click="clickFish"/>
